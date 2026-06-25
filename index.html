@@ -2,354 +2,439 @@
 <html lang="th">
 <head>
     <meta charset="UTF-8">
-    <title>Resume - Thanapon Visedsang</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume - Thanapon Visedsang (Pentor Capital Theme)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
-        @page {
-            size: A4;
-            margin: 6mm 8mm 6mm 8mm;
-            background-color: #f8fafc;
-        }
-        
+        /* BASE STYLES */
         * {
             box-sizing: border-box;
+            transition: all 0.25s ease-in-out;
         }
 
         body {
             margin: 0;
-            padding: 0;
-            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif, 'Sarabun';
-            color: #1e293b;
-            line-height: 1.4;
-            font-size: 8.5pt;
+            padding: 20px;
+            font-family: 'Inter', 'Sarabun', sans-serif;
+            background-color: #f1f5f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
-        .main-container {
+        /* CONTAINER (Responsive Wrapper) */
+        .resume-page {
             width: 100%;
-            border-collapse: collapse;
-        }
-
-        .left-col {
-            width: 30%;
-            vertical-align: top;
-            background-color: #0b1329;
-            color: #f1f5f9;
-            padding: 6mm 5mm;
-            border-radius: 6px 0 0 6px;
-            height: 284mm;
-        }
-
-        .right-col {
-            width: 70%;
-            vertical-align: top;
+            max-width: 210mm;
+            min-height: 297mm;
             background-color: #ffffff;
-            padding: 8mm 7mm;
-            border-radius: 0 6px 6px 0;
-            height: 284mm;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.03);
+            display: flex;
+            flex-direction: row; /* Desktop เป็นแบบแนวนอน 2 คอลัมน์ */
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid #e2e8f0;
         }
 
-        /* Profile Image Styles */
-        .profile-container {
-            text-align: center;
-            margin-bottom: 5mm;
-        }
-
-        .profile-img {
-            width: 38mm;
-            height: 48mm;
-            object-fit: cover;
-            border-radius: 4px;
-            border: 2px solid #0284c7;
-            background-color: #1e293b;
-        }
-
-        /* Sidebar Elements */
-        .profile-name {
-            font-size: 13pt;
-            font-weight: 700;
+        /* LEFT SIDEBAR - Pentor Red Theme */
+        .sidebar {
+            width: 32%;
+            background-color: #dc2626; /* สีแดงประจำอัตลักษณ์ เป็นต่อ แคปปิตอล */
             color: #ffffff;
-            margin: 0 0 2px 0;
-            line-height: 1.1;
-            letter-spacing: 0.5px;
-            text-align: center;
+            padding: 35px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border-right: 1px solid #ef4444;
         }
 
-        .profile-title {
-            font-size: 8.5pt;
-            color: #0284c7;
+        /* Profile Image */
+        .profile-container {
+            width: 135px;
+            height: 175px;
+            background-color: #ffffff;
+            border-radius: 6px;
+            border: 3px solid #ffffff;
+            margin-bottom: 22px;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+            flex-shrink: 0;
+        }
+
+        .profile-container svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .name {
+            font-size: 19px;
+            font-weight: 700;
+            text-align: center;
+            margin: 0;
+            letter-spacing: 0.8px;
+            color: #ffffff;
+            line-height: 1.2;
+        }
+
+        .title {
+            font-size: 11px;
+            color: #fca5a5;
             font-weight: 600;
             text-transform: uppercase;
-            margin-bottom: 12px;
-            letter-spacing: 0.5px;
+            margin-top: 6px;
+            margin-bottom: 25px;
+            letter-spacing: 1px;
             text-align: center;
         }
 
-        .sidebar-heading {
-            font-size: 9pt;
-            color: #ffffff;
-            text-transform: uppercase;
-            border-bottom: 1px solid #1e293b;
-            padding-bottom: 2px;
-            margin: 10px 0 5px 0;
-            letter-spacing: 0.5px;
-            font-weight: bold;
-        }
-
-        .contact-item {
-            font-size: 8pt;
-            margin-bottom: 3px;
-            color: #cbd5e1;
-        }
-        
-        .contact-item strong {
-            color: #0284c7;
-        }
-
-        .skill-badge {
-            display: inline-block;
-            background-color: #111827;
-            color: #e2e8f0;
-            padding: 1px 5px;
-            margin: 1.5px 1px;
-            border-radius: 3px;
-            font-size: 7.5pt;
-            border: 1px solid #1f2937;
-        }
-
-        /* Right Column Elements */
-        .section-title {
-            font-size: 10.5pt;
-            color: #0b1329;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin: 0 0 6px 0;
-            padding-bottom: 2px;
-            border-bottom: 2px solid #0b1329;
-            font-weight: 700;
-        }
-
-        .section-title.next {
-            margin-top: 10px;
-        }
-
-        .summary-text {
-            font-size: 8.5pt;
-            text-align: left;
-            margin-bottom: 8px;
-            color: #334155;
-        }
-
-        /* Experience Block */
-        .exp-item {
-            margin-bottom: 7px;
-        }
-
-        .exp-header {
-            display: table;
+        /* CONTACT INFO TEXT SECTION */
+        .contact-box {
             width: 100%;
-            margin-bottom: 1px;
+            background-color: rgba(255, 255, 255, 0.08);
+            border-radius: 8px;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .exp-title-cell {
-            display: table-cell;
+        .contact-info-item {
+            font-size: 11.5px;
+            color: #ffffff;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            word-break: break-all;
+        }
+
+        .contact-info-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .contact-info-item i {
+            font-size: 12px;
+            color: #fca5a5;
+            width: 14px;
+            text-align: center;
+        }
+
+        /* SKILL BADGES */
+        .sidebar-heading {
+            width: 100%;
+            font-size: 12px;
             font-weight: 700;
-            color: #0b1329;
-            font-size: 8.5pt;
+            text-transform: uppercase;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            padding-bottom: 4px;
+            margin: 18px 0 10px 0;
+            color: #fca5a5;
+            letter-spacing: 0.5px;
         }
 
-        .exp-date-cell {
-            display: table-cell;
-            text-align: right;
-            font-size: 8pt;
+        .skill-container {
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+
+        .badge {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            padding: 4px 9px;
+            border-radius: 4px;
+            font-size: 10.5px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .badge:hover {
+            background-color: #ffffff;
+            color: #dc2626;
+            border-color: #ffffff;
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            font-weight: 600;
+        }
+
+        /* RIGHT COLUMN - Clean Crisp White */
+        .content {
+            width: 68%;
+            padding: 40px 35px;
+            background-color: #ffffff;
+        }
+
+        .section-title {
+            font-size: 15px;
+            font-weight: 700;
+            color: #1e293b;
+            text-transform: uppercase;
+            border-bottom: 2px solid #dc2626;
+            margin-bottom: 18px;
+            padding-bottom: 4px;
+            letter-spacing: 0.5px;
+        }
+
+        .summary {
+            font-size: 13px;
+            line-height: 1.6;
+            color: #334155;
+            margin-bottom: 25px;
+            text-align: justify;
+        }
+
+        /* EXPERIENCE HOVER EFFECT */
+        .job-item {
+            margin-bottom: 18px;
+            padding: 12px;
+            border-radius: 8px;
+            border-left: 0 solid #dc2626;
+        }
+
+        .job-item:hover {
+            background-color: #fef2f2;
+            transform: translateX(4px);
+            border-left: 3px solid #dc2626;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.01);
+        }
+
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 3px;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+
+        .job-title {
+            font-weight: 700;
+            font-size: 14px;
+            color: #1e293b;
+        }
+
+        .job-date {
+            font-size: 11.5px;
             color: #64748b;
             font-style: italic;
         }
 
-        .exp-company {
-            font-size: 8.2pt;
-            color: #0284c7;
+        .company {
+            color: #b91c1c; 
             font-weight: 600;
-            margin-bottom: 3px;
+            font-size: 12.5px;
+            margin-bottom: 8px;
+        }
+
+        /* REAL CDN TECH ICONS IN-TEXT */
+        .inline-tech-icon {
+            display: inline-flex;
+            align-items: center;
+            background-color: #f8fafc;
+            color: #334155;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 10.5px;
+            font-weight: 600;
+            margin: 2px 2px;
+            border: 1px solid #e2e8f0;
+            vertical-align: middle;
+            gap: 4px;
         }
 
         ul {
             margin: 0;
-            padding-left: 11px;
+            padding-left: 16px;
         }
 
         li {
-            margin-bottom: 2.5px;
-            font-size: 8.2pt;
-            color: #334155;
-            text-align: left;
+            font-size: 12.5px;
+            color: #475569;
+            margin-bottom: 6px;
+            line-height: 1.6;
         }
 
         .edu-item {
-            margin-bottom: 2px;
-        }
-        
-        .edu-degree {
-            font-weight: 700;
-            color: #0b1329;
-            font-size: 8.5pt;
-        }
-        
-        .edu-school {
-            font-size: 8.2pt;
-            color: #475569;
+            padding: 4px 12px;
         }
 
-        .honors-tag {
-            color: #ea580c;
-            font-weight: bold;
-            font-size: 8pt;
+        .honors {
+            color: #dc2626;
+            font-weight: 700;
+            font-size: 12.5px;
+            margin-top: 2px;
+        }
+
+        /* 📱 RESPONSIVE MEDIA QUERIES (สำหรับมือถือและแท็บเล็ต) */
+        @media screen and (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .resume-page {
+                flex-direction: column; /* สลับแถบข้อมูลมาเรียงต่อกันเป็นแนวตั้ง */
+                min-height: auto;
+            }
+
+            .sidebar {
+                width: 100%;
+                border-right: none;
+                border-bottom: 4px solid #ffffff;
+                padding: 30px 20px;
+            }
+
+            .content {
+                width: 100%;
+                padding: 30px 20px;
+            }
+
+            .contact-box {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* แบ่งข้อมูลการติดต่อเป็นตารางเมื่อจอกว้างพอ */
+                gap: 10px;
+            }
+
+            .contact-info-item {
+                margin-bottom: 0;
+            }
+        }
+
+        /* 🖨️ PRINT OPTIMIZATION (คงความนิ่งและสวยงามเวลาพิมพ์ลงกระดาษ) */
+        @media print {
+            body { padding: 0; background: none; }
+            .resume-page { box-shadow: none; width: 210mm; height: 297mm; display: flex; flex-direction: row; border-radius: 0; border: none; }
+            .sidebar { width: 32% !important; background-color: #dc2626 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .content { width: 68% !important; }
+            .contact-box { background-color: rgba(0,0,0,0.05) !important; border: 1px solid #cbd5e1; display: block; }
+            .badge { background-color: rgba(255,255,255,0.1) !important; color: #fff !important; }
+            .inline-tech-icon { border: 1px solid #cbd5e1; background: #f8fafc !important; }
+            .badge:hover, .job-item:hover { transform: none; box-shadow: none; background: none; border-left: none; }
         }
     </style>
 </head>
 <body>
 
-    <table class="main-container">
-        <tr>
-            <!-- Left Sidebar -->
-            <td class="left-col">
-                <!-- Profile Image Section -->
-                <div class="profile-container">
-                    <!-- ใส่รูปภาพทางการของคุณตรงนี้ (สามารถเปลี่ยน src เป็นพาธรูปภาพของคุณ เช่น "profile.jpg") -->
-                    <!-- ด้านล่างนี้เป็น SVG สัญลักษณ์ตัวแทนรูปโปรไฟล์สูทสากลเพื่อให้แสดงผลได้ทันที -->
-                    <svg class="profile-img" viewBox="0 0 100 125" xmlns="http://www.w3.org/2000/svg">
-                        <rect width="100%" height="100%" fill="#1e293b"/>
-                        <circle cx="50" cy="45" r="22" fill="#e2e8f0"/>
-                        <path d="M50,70 L30,95 L35,115 L65,115 L70,95 Z" fill="#334155"/>
-                        <path d="M50,70 L40,95 L50,105 L60,95 Z" fill="#ffffff"/>
-                        <path d="M50,80 L46,95 L50,98 L54,95 Z" fill="#0284c7"/>
-                        <path d="M38,72 Q50,85 62,72 Q75,100 85,125 L15,125 Q25,100 38,72 Z" fill="#475569"/>
-                    </svg>
-                </div>
+    <div class="resume-page">
+        <div class="sidebar">
+            <div class="profile-container">
+                <img src="picture-profile.jpg" alt="Profile Picture" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
 
-                <div class="profile-name">THANAPON<br>VISEDSANG</div>
-                <div class="profile-title">Software Developer</div>
-                
-                <div class="sidebar-heading">Contact</div>
-                <div class="contact-item"><strong>Loc:</strong> กรุงเทพมหานคร, ไทย</div>
-                <div class="contact-item"><strong>Phone:</strong> 061-980-7818</div>
-                <div class="contact-item"><strong>Email:</strong> thanapon7818@gmail.com</div>
-                
-                <div class="sidebar-heading">Core Languages</div>
-                <div>
-                    <span class="skill-badge">TypeScript</span>
-                    <span class="skill-badge">JavaScript</span>
-                    <span class="skill-badge">C#</span>
-                    <span class="skill-badge">PHP</span>
-                    <span class="skill-badge">SQL</span>
-                    <span class="skill-badge">PL/SQL</span>
-                </div>
+            <h1 class="name">THANAPON<br>VISEDSANG</h1>
+            <div class="title">Software Developer</div>
 
-                <div class="sidebar-heading">Frontend</div>
-                <div>
-                    <span class="skill-badge">Angular</span>
-                    <span class="skill-badge">Bootstrap</span>
-                    <span class="skill-badge">Razor (MVC)</span>
-                    <span class="skill-badge">HTML5/CSS3</span>
+            <div class="sidebar-heading" style="margin-top: 0;">Contact</div>
+            <div class="contact-box">
+                <div class="contact-info-item">
+                    <i class="fa-solid fa-phone"></i>
+                    <span>061-980-7818</span>
                 </div>
+                <div class="contact-info-item">
+                    <i class="fa-solid fa-envelope"></i>
+                    <span>thanapon7818@gmail.com</span>
+                </div>
+                <div class="contact-info-item">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <span>นครปฐม, ประเทศไทย</span>
+                </div>
+            </div>
 
-                <div class="sidebar-heading">Backend & DB</div>
-                <div>
-                    <span class="skill-badge">NestJS</span>
-                    <span class="skill-badge">Node.js</span>
-                    <span class="skill-badge">Prisma ORM</span>
-                    <span class="skill-badge">ASP.NET Core</span>
-                    <span class="skill-badge">PostgreSQL</span>
-                    <span class="skill-badge">MongoDB</span>
-                    <span class="skill-badge">Oracle</span>
-                    <span class="skill-badge">MySQL</span>
-                </div>
+            <div class="sidebar-heading">Core Languages</div>
+            <div class="skill-container">
+                <span class="badge"><i class="devicon-typescript-plain"></i> TypeScript</span>
+                <span class="badge"><i class="devicon-javascript-plain"></i> JavaScript</span>
+                <span class="badge"><i class="devicon-csharp-plain"></i> C#</span>
+                <span class="badge"><i class="devicon-php-plain"></i> PHP</span>
+                <span class="badge"><i class="fa-solid fa-database"></i> SQL</span>
+            </div>
 
-                <div class="sidebar-heading">DevOps & Architecture</div>
-                <div>
-                    <span class="skill-badge">Azure AKS</span>
-                    <span class="skill-badge">Docker</span>
-                    <span class="skill-badge">GitHub Actions</span>
-                    <span class="skill-badge">Log Analytics</span>
-                    <span class="skill-badge">Postman</span>
-                    <span class="skill-badge">Jira / Agile</span>
-                    <span class="skill-badge">JWT / RBAC</span>
-                </div>
-            </td>
-            
-            <!-- Right Content Area -->
-            <td class="right-col">
-                <div class="section-title">Professional Summary</div>
-                <div class="summary-text">
-                    นักพัฒนาซอฟต์แวร์ <strong>Full-stack Developer</strong> ดีกรีเกียรตินิยมอันดับ 1 ที่มุ่งเน้นผลลัพธ์และความเสถียรของระบบ มีความเชี่ยวชาญในการออกแบบและพัฒนา <strong>Enterprise Web Solutions</strong> ขนาดใหญ่โดยใช้เครื่องมือหลักอย่าง <strong>Angular, NestJS และ C# .NET Core</strong> มีประสบการณ์ตรงในการเปลี่ยนความต้องการทางธุรกิจที่มีโครงสร้างซับซ้อน ให้กลายเป็น <strong>High-performance RESTful APIs</strong> พร้อมเสริมความปลอดภัยด้วยการวางโครงสร้าง <strong>RBAC Frameworks</strong> รวมถึงการจัดระเบียบและปรับปรุงระบบฐานข้อมูลขนาดใหญ่ให้ทำงานได้รวดเร็วยิ่งขึ้น นอกจากนี้ยังมีทักษะในการบริหารจัดการระบบแบบคอนเทนเนอร์บนคลาวด์ผ่าน <strong>Azure Kubernetes Service (AKS)</strong> และการขับเคลื่อนกระบวนการ <strong>CI/CD Automation</strong> ภายใต้การทำงานร่วมกันในทีมรูปแบบ <strong>Agile</strong> อย่างมีประสิทธิภาพ
-                </div>
-                
-                <div class="section-title next">Professional Experience</div>
-                
-                <!-- Job 1 -->
-                <div class="exp-item">
-                    <div class="exp-header">
-                        <div class="exp-title-cell">Full-stack Developer</div>
-                        <div class="exp-date-cell">มิ.ย. 2025 – ปัจจุบัน</div>
-                    </div>
-                    <div class="exp-company">Epic Consulting Co., Ltd. | Telecommunications Domain</div>
-                    <ul>
-                        <li>ออกแบบสถาปัตยกรรมและร่วมพัฒนาระบบ <strong>High-traffic Enterprise Systems</strong> โดยใช้ <strong>Angular</strong> สรรค์สร้างส่วนติดต่อผู้ใช้งาน และใช้ <strong>NestJS/Node.js</strong> ขับเคลื่อนระบบหลังบ้านประสิทธิภาพสูงในรูปแบบ Decoupled</li>
-                        <li>ประสบความสำเร็จในการทำ <strong>Refactor และ Migrate</strong> โค้ดของระบบเดิมจาก <strong>Express.js Microservices</strong> มาอยู่บน <strong>NestJS</strong> ส่งผลให้ตัวระบบมีความยืดหยุ่น ปลอดภัย และง่ายต่อการบำรุงรักษาตามมาตรฐาน Type Safety</li>
-                        <li>วิเคราะห์และพัฒนา <strong>Data Processing Engine</strong> ด้วยการปรับใช้เทคนิค <strong>Batch Processing และ Redis Caching</strong> ซึ่งช่วยลดระยะเวลาในการประมวลผลและโหลดหน้าจอ Dashboard สำหรับชุดข้อมูลโทรคมนาคมขนาดใหญ่ได้อย่างมีนัยสำคัญ</li>
-                        <li>เพิ่มความรวดเร็วในรอบการส่งมอบฟีเจอร์ใหม่ๆ โดยการปรับแต่งและจัดระบบ <strong>Container Workflows</strong> ทั้งในสภาพแวดล้อม Staging และ Production ด้วยการประยุกต์ใช้ <strong>Docker และ docker-compose</strong></li>
-                        <li>ดูแลรักษาความเสถียรและประสิทธิภาพของระบบบนโปรดักชันอย่างใกล้ชิด ผ่านการตรวจสอบสัญญาณและวิเคราะห์ <strong>Critical Runtime Metrics</strong> บน <strong>Azure Log Analytics</strong> ควบคู่ไปกับการประสานงานร่วมกับทีม QA</li>
-                    </ul>
-                </div>
+            <div class="sidebar-heading">Frontend</div>
+            <div class="skill-container">
+                <span class="badge"><i class="devicon-angularjs-plain"></i> Angular</span>
+                <span class="badge"><i class="devicon-bootstrap-plain"></i> Bootstrap</span>
+                <span class="badge"><i class="devicon-html5-plain"></i> HTML5/CSS3</span>
+            </div>
 
-                <!-- Job 2 -->
-                <div class="exp-item">
-                    <div class="exp-header">
-                        <div class="exp-title-cell">Full-stack Developer (Freelance)</div>
-                        <div class="exp-date-cell">มิ.ย. 2023 – พ.ค. 2025</div>
-                    </div>
-                    <div class="exp-company">Independent Digital Solutions | Cross-Industry Systems</div>
-                    <ul>
-                        <li>ประสานงานและรับโจทย์จากลูกค้าโดยตรง เพื่อแกะ Business Logic นำมาดีไซน์และพัฒนาเป็นเว็บแอปพลิเคชันระบบ <strong>ERP, CRM และ POS</strong> เต็มรูปแบบ พร้อมระบบออกรายงานทางการเงินและแสดงกราฟสรุปผล (Dashboard)</li>
-                        <li>ออกแบบและวางโครงสร้างแพลตฟอร์มซื้อขายประกันภัยออนไลน์ (<strong>E-insurance Platforms</strong>) แบบครบวงจร พร้อมระบบเชื่อมต่อบริการชำระเงินกับ <strong>Third-party Payment Gateway</strong> ทั้ง Credit และ Debit Card อย่างปลอดภัย</li>
-                        <li>ขับเคลื่อนการสร้างและดูแลระบบ <strong>Property Management Multi-tenant Web Portals</strong> ตั้งแต่เริ่มตั้งไข่ พร้อมทั้งดูแลรับผิดชอบและสนับสนุนทางเทคนิคให้กับระบบบน Production ในระยะยาว</li>
-                    </ul>
-                </div>
+            <div class="sidebar-heading">Backend & DB</div>
+            <div class="skill-container">
+                <span class="badge"><i class="devicon-nestjs-plain"></i> NestJS</span>
+                <span class="badge"><i class="devicon-nodejs-plain"></i> Node.js</span>
+                <span class="badge"><i class="devicon-postgresql-plain"></i> PostgreSQL</span>
+                <span class="badge"><i class="devicon-mongodb-plain"></i> MongoDB</span>
+                <span class="badge"><i class="devicon-oracle-original"></i> Oracle</span>
+            </div>
 
-                <!-- Job 3 -->
-                <div class="exp-item">
-                    <div class="exp-header">
-                        <div class="exp-title-cell">Programmer Analyst</div>
-                        <div class="exp-date-cell">พ.ค. 2022 – พ.ค. 2023</div>
-                    </div>
-                    <div class="exp-company">Mimo Tech Co., Ltd. (AIS Group) | Telecommunications Domain</div>
-                    <ul>
-                        <li>ออกแบบและพัฒนาระบบเว็บแอปพลิเคชันภายในองค์กร (Internal Web Systems) รวมถึงการวางท่อส่งข้อมูลที่ปลอดภัย (<strong>Secure Data Pipelines</strong>) ให้กับกลุ่มบริษัทโทรคมนาคมชั้นนำของประเทศด้วย <strong>C# และ ASP.NET Core MVC</strong></li>
-                        <li>พัฒนาและเพิ่มประสิทธิภาพให้กับ <strong>High-velocity RESTful Endpoints</strong> เพื่อรองรับการนำเข้าข้อมูลยอดขายในแต่ละวันที่มีปริมาณมหาศาล (Daily Sales Data Ingestion) ส่งต่อไปยังแพลตฟอร์มวิเคราะห์ข้อมูลเชิงลึกของผู้บริหาร</li>
-                        <li>ยกระดับความเร็วในการตอบสนองของระบบเว็บบอร์ดและแอปพลิเคชัน โดยการนำ <strong>Asynchronous Background Worker Threads</strong> และระบบแคชชุดคำสั่งฐานข้อมูล (<strong>Query Caching</strong>) เข้ามาประยุกต์ใช้</li>
-                    </ul>
-                </div>
+            <div class="sidebar-heading">DevOps & Cloud</div>
+            <div class="skill-container">
+                <span class="badge"><i class="devicon-azure-plain"></i> Azure AKS</span>
+                <span class="badge"><i class="devicon-docker-plain"></i> Docker</span>
+                <span class="badge"><i class="devicon-github-original"></i> GitHub</span>
+                <span class="badge"><i class="fa-solid fa-square-check"></i> Agile/Scrum</span>
+            </div>
+        </div>
 
-                <!-- Job 4 -->
-                <div class="exp-item">
-                    <div class="exp-header">
-                        <div class="exp-title-cell">Full-stack Developer (Co-op)</div>
-                        <div class="exp-date-cell">ม.ค. 2022 – เม.ย. 2022</div>
-                    </div>
-                    <div class="exp-company">Dina Solution Co., Ltd. | E-commerce & Property Solutions</div>
-                    <ul>
-                        <li>มีส่วนร่วมในการพัฒนาฟีเจอร์บนหน้าเว็บที่ยึดผู้ใช้งานเป็นศูนย์กลาง โดยการเลือกใช้ <strong>Angular, Node.js และ PHP</strong> ทำงานร่วมกับโครงสร้างฐานข้อมูลแบบเรียลไทม์อย่าง <strong>Firebase Infrastructure</strong></li>
-                        <li>เร่งสปีดการส่งมอบชิ้นงานให้รวดเร็วยิ่งขึ้น ผ่านการทำ System Integration เชื่อมโยงระบบเข้ากับ <strong>External APIs</strong>, ระบบยิงสัญญาณติดตามสินค้า (Shipment Hooks) และบริการชำระเงินค่ายต่างๆ</li>
-                    </ul>
-                </div>
+        <div class="content">
+            <div class="section-title">Professional Summary</div>
+            <div class="summary">
+                นักพัฒนาซอฟต์แวร์ <strong>Full-stack Developer</strong> เกียรตินิยมอันดับ 1 ที่มุ่งเน้นความน่าเชื่อถือและความแม่นยำสูงสุดของระบบหลังบ้านและผลิตภัณฑ์ทางเทคโนโลยี เชี่ยวชาญการสร้างสรรค์ <strong>Enterprise Web Solutions</strong> ขนาดใหญ่โดยเลือกใช้ระบบสแต็คคุณภาพสูงอย่าง <span class="inline-tech-icon"><i class="devicon-angularjs-plain colored"></i> Angular</span> <span class="inline-tech-icon"><i class="devicon-nestjs-plain colored"></i> NestJS</span> และ <span class="inline-tech-icon"><i class="devicon-csharp-plain colored"></i> C# .NET</span> มีความเชี่ยวชาญเป็นพิเศษในการส่งมอบความปลอดภัยและการทำ <strong>High-performance RESTful APIs</strong> เพื่อรองรับการทำงานกับระบบบริการและข้อมูลทางการเงินอย่างมีระบบ พร้อมขับเคลื่อนงานภายใต้ทีมรูปแบบ <strong>Agile</strong>
+            </div>
 
-                <div class="section-title next">Education</div>
-                <div class="edu-item">
-                    <div class="edu-degree">วิทยาศาสตรบัณฑิต สาขาวิชาเทคโนโลยีสารสนเทศ (IT)</div>
-                    <div class="edu-school">มหาวิทยาลัยเกษตรศาสตร์ วิทยาเขตกำแพงแสน</div>
-                    <div class="honors-tag">เกียรตินิยมอันดับ 1 (GPA 3.73)</div>
+            <div class="section-title">Professional Experience</div>
+
+            <div class="job-item">
+                <div class="job-header">
+                    <span class="job-title">Full-stack Developer</span>
+                    <span class="job-date">มิ.ย. 2025 – ปัจจุบัน</span>
                 </div>
-            </td>
-        </tr>
-    </table>
+                <div class="company">Epic Consulting Co., Ltd. | Telecommunications Domain</div>
+                <ul>
+                    <li>ดีไซน์สถาปัตยกรรมและร่วมพัฒนาระบบ High-traffic Enterprise หลังบ้านประสิทธิภาพสูงแบบ Decoupled <span class="inline-tech-icon"><i class="devicon-angularjs-plain colored"></i> Angular</span> <span class="inline-tech-icon"><i class="devicon-nestjs-plain colored"></i> NestJS</span></li>
+                    <li>ประสบความสำเร็จในการทำ Refactor และ Migrate ระบบเดิมมาเป็นโครงสร้างระบบที่ปลอดภัยตามมาตรฐานสากล <span class="inline-tech-icon"><i class="devicon-typescript-plain colored"></i> TypeScript</span></li>
+                    <li>พัฒนา Data Processing Engine พร้อมระบบแคชประสิทธิภาพสูงเพื่อลดเวลาการประมวลผลข้อมูลและจัดหน้า Dashboard สรุปสถิติ <span class="inline-tech-icon"><i class="devicon-redis-plain colored"></i> Redis</span> <span class="inline-tech-icon"><i class="fa-solid fa-database"></i> SQL</span></li>
+                </ul>
+            </div>
+
+            <div class="job-item">
+                <div class="job-header">
+                    <span class="job-title">Full-stack Developer (Freelance)</span>
+                    <span class="job-date">มิ.ย. 2023 – พ.ค. 2025</span>
+                </div>
+                <div class="company">Independent Digital Solutions | Cross-Industry Systems</div>
+                <ul>
+                    <li>แปลงความต้องการทางธุรกิจที่มีความซับซ้อนให้ออกมาเป็น Web Application ระบบ ERP, CRM และระบบคิดเงินหน้าร้าน POS ที่ครบถ้วนสมบูรณ์</li>
+                    <li>ออกแบบโครงสร้างระบบชำระและจัดการธุรกรรมออนไลน์ พร้อมออกแบบระบบจัดการข้อมูลและเชื่อมต่อผ่าน <span class="inline-tech-icon"><i class="fa-solid fa-plug"></i> Payment APIs</span> ได้อย่างแม่นยำ</li>
+                </ul>
+            </div>
+
+            <div class="job-item">
+                <div class="job-header">
+                    <span class="job-title">Programmer Analyst</span>
+                    <span class="job-date">พ.ค. 2022 – พ.ค. 2023</span>
+                </div>
+                <div class="company">Mimo Tech Co., Ltd. (AIS Group) | Telecommunications Domain</div>
+                <ul>
+                    <li>พัฒนาเว็บบอร์ดภายในองค์กรและระบบจัดหมวดหมู่ข้อมูลท่อส่งแบบปลอดภัยสูง (Secure Data Pipelines) <span class="inline-tech-icon"><i class="devicon-csharp-plain colored"></i> C#</span> <span class="inline-tech-icon"><i class="devicon-dotnetcore-plain colored"></i> .NET Core</span></li>
+                    <li>ยกระดับการตอบสนองของระบบฐานข้อมูลองค์กรผ่านการแคชชุดคำสั่งและการประมวลผลประสิทธิภาพสูงแบบเบื้องหลัง <span class="inline-tech-icon"><i class="devicon-oracle-original colored"></i> Oracle PL/SQL</span></li>
+                </ul>
+            </div>
+
+            <div class="section-title" style="margin-top: 25px;">Education</div>
+            <div class="edu-item">
+                <div class="job-title">วิทยาศาสตรบัณฑิต สาขาวิชาเทคโนโลยีสารสนเทศ (IT)</div>
+                <div style="font-size: 13px; color: #475569; margin-top: 2px;">มหาวิทยาลัยเกษตรศาสตร์ วิทยาเขตกำแพงแสน</div>
+                <div class="honors">เกียรตินิยมอันดับ 1 (GPA 3.73)</div>
+            </div>
+        </div>
+    </div>
 
 </body>
 </html>
