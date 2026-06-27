@@ -53,7 +53,7 @@
 
         /* Profile Image */
         .profile-container {
-            width: 135px;
+            width: 140px;
             height: 175px;
             background-color: #ffffff;
             border-radius: 6px;
@@ -65,25 +65,32 @@
             align-items: center;
             box-shadow: 0 4px 14px rgba(0,0,0,0.15);
             flex-shrink: 0;
+            cursor: pointer;
         }
 
+        .profile-container img,
         .profile-container svg {
             width: 100%;
             height: 100%;
+            transition: transform 0.3s ease, filter 0.3s ease;
         }
 
         .name {
-            font-size: 19px;
+            font-size: 16px;
             font-weight: 700;
             text-align: center;
             margin: 0;
             letter-spacing: 0.8px;
             color: #ffffff;
             line-height: 1.2;
+            margin-bottom: 9px;
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 8px;
         }
 
         .title {
-            font-size: 11px;
+            font-size: 14px;
             color: #fca5a5;
             font-weight: 600;
             text-transform: uppercase;
@@ -91,6 +98,62 @@
             margin-bottom: 25px;
             letter-spacing: 1px;
             text-align: center;
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 999px;
+            border: 1px solid transparent;
+        }
+
+        .lang-toggle {
+            align-self: flex-end;
+            margin: 0 0 14px 0;
+            padding: 6px 12px;
+            border-radius: 999px;
+            border: 1px solid rgba(255, 255, 255, 0.28);
+            background-color: rgba(255, 255, 255, 0.12);
+            color: #ffffff;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.8px;
+            cursor: pointer;
+            backdrop-filter: blur(4px);
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+        }
+
+        .lang-toggle:hover {
+            background-color: #ffffff;
+            color: #dc2626;
+            border-color: #ffffff;
+            transform: translateY(-2px);
+        }
+
+        .lang-toggle:focus-visible {
+            outline: 2px solid #ffffff;
+            outline-offset: 2px;
+        }
+
+        .profile-container:hover {
+            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.22);
+            transform: translateY(-3px);
+        }
+
+        .profile-container:hover img {
+            transform: scale(1.05);
+            filter: saturate(1.08) contrast(1.02);
+        }
+
+        .name:hover {
+            background-color: rgba(255, 255, 255, 0.12);
+            transform: translateY(-2px);
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.18);
+        }
+
+        .title:hover {
+            color: #ffffff;
+            background-color: rgba(255, 255, 255, 0.12);
+            border-color: rgba(255, 255, 255, 0.18);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
         }
 
         /* CONTACT INFO TEXT SECTION */
@@ -265,6 +328,7 @@
 
         .edu-item {
             padding: 4px 12px;
+            margin-bottom: 30px;
         }
 
         .honors {
@@ -314,6 +378,7 @@
             .resume-page { box-shadow: none; width: 210mm; height: 297mm; display: flex; flex-direction: row; border-radius: 0; border: none; }
             .sidebar { width: 32% !important; background-color: #dc2626 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
             .content { width: 68% !important; }
+            .lang-toggle { display: none !important; }
             .contact-box { background-color: rgba(0,0,0,0.05) !important; border: 1px solid #cbd5e1; display: block; }
             .badge { background-color: rgba(255,255,255,0.1) !important; color: #fff !important; }
             .inline-tech-icon { border: 1px solid #cbd5e1; background: #f8fafc !important; }
@@ -325,14 +390,16 @@
 
     <div class="resume-page">
         <div class="sidebar">
+            <button class="lang-toggle" id="langToggle" type="button" aria-label="Toggle language" aria-pressed="false">EN</button>
             <div class="profile-container">
-                <img src="thanapon.jpg" alt="Profile Picture" style="width: 100%; height: 100%; object-fit: cover;">
+                <img src="thanapon.jpg" alt="Profile Picture" style="width: 100%; height: 100%;">
             </div>
 
-            <h1 class="name">THANAPON<br>VISEDSANG</h1>
-            <div class="title">Software Developer <br><span style="font-size: 14px !important; color: #fca5a5; font-weight: 800;">เจ้าหน้าที่ IT</span></div>
+            <h1 class="name">THANAPON VISEDSANG</h1>
+            <h1 class="name" id="secondaryName">ธนพล วิเศษสังข์ อายุ 26 ปี</h1>
+            <div class="title" id="profileTitle">IT Support | เจ้าหน้าที่ IT</div>
 
-            <div class="sidebar-heading" style="margin-top: 0;">Contact</div>
+            <div class="sidebar-heading" style="margin-top: 0;" id="contactHeading">ข้อมูลติดต่อ</div>
             <div class="contact-box">
                 <div class="contact-info-item">
                     <i class="fa-solid fa-phone"></i>
@@ -344,11 +411,11 @@
                 </div>
                 <div class="contact-info-item">
                     <i class="fa-solid fa-location-dot"></i>
-                    <span>นครปฐม, ประเทศไทย</span>
+                    <span id="addressText">ซอยพหลโยธิน 8, เขตพญาไท กรุงเทพมหานคร ประเทศไทย</span>
                 </div>
             </div>
 
-            <div class="sidebar-heading">Core Languages</div>
+            <div class="sidebar-heading" id="programmingHeading">ภาษาโปรแกรมหลัก</div>
             <div class="skill-container">
                 <span class="badge"><i class="devicon-typescript-plain"></i> TypeScript</span>
                 <span class="badge"><i class="devicon-javascript-plain"></i> JavaScript</span>
@@ -357,84 +424,341 @@
                 <span class="badge"><i class="fa-solid fa-database"></i> SQL</span>
             </div>
 
-            <div class="sidebar-heading">Frontend</div>
+            <div class="sidebar-heading" id="frontendHeading">ส่วนหน้า (Frontend)</div>
             <div class="skill-container">
                 <span class="badge"><i class="devicon-angularjs-plain"></i> Angular</span>
+                <span class="badge"><i class="devicon-html5-plain"></i> HTML5</span>
+                <span class="badge"><i class="devicon-css3-plain"></i> CSS3</span>
                 <span class="badge"><i class="devicon-bootstrap-plain"></i> Bootstrap</span>
-                <span class="badge"><i class="devicon-html5-plain"></i> HTML5/CSS3</span>
             </div>
 
-            <div class="sidebar-heading">Backend & DB</div>
+            <div class="sidebar-heading" id="backendHeading">ส่วนหลังและฐานข้อมูล</div>
             <div class="skill-container">
                 <span class="badge"><i class="devicon-nestjs-plain"></i> NestJS</span>
                 <span class="badge"><i class="devicon-nodejs-plain"></i> Node.js</span>
-                <span class="badge"><i class="devicon-postgresql-plain"></i> PostgreSQL</span>
+                <span class="badge"><i class="devicon-dotnetcore-plain"></i> ASP.NET Core MVC</span>
+                <span class="badge"><i class="devicon-dotnetcore-plain"></i> .NET</span>
+                <span class="badge"><i class="fa-solid fa-code-branch"></i> Express</span>
+                <span class="badge"><i class="fa-solid fa-bolt"></i> Fastify</span>
+                <span class="badge"><i class="fa-solid fa-layer-group"></i> Entity Framework</span>
                 <span class="badge"><i class="devicon-mongodb-plain"></i> MongoDB</span>
+                <span class="badge"><i class="fa-solid fa-database"></i> SQL Server</span>
+                <span class="badge"><i class="devicon-postgresql-plain"></i> PostgreSQL</span>
                 <span class="badge"><i class="devicon-oracle-original"></i> Oracle</span>
+                <span class="badge"><i class="devicon-firebase-plain"></i> Firebase</span>
+                <span class="badge"><i class="fa-solid fa-database"></i> SQL</span>
             </div>
 
-            <div class="sidebar-heading">DevOps & Cloud</div>
+            <div class="sidebar-heading" id="coreHeading">เทคนิคหลัก</div>
             <div class="skill-container">
-                <span class="badge"><i class="devicon-azure-plain"></i> Azure AKS</span>
+                <span class="badge"><i class="fa-solid fa-diagram-project"></i> Microservices</span>
+                <span class="badge"><i class="fa-solid fa-shield-halved"></i> RBAC</span>
+                <span class="badge"><i class="fa-solid fa-database"></i> Caching</span>
+                <span class="badge"><i class="fa-solid fa-gears"></i> Background Jobs</span>
                 <span class="badge"><i class="devicon-docker-plain"></i> Docker</span>
-                <span class="badge"><i class="devicon-github-original"></i> GitHub</span>
                 <span class="badge"><i class="fa-solid fa-square-check"></i> Agile/Scrum</span>
             </div>
         </div>
 
         <div class="content">
-            <div class="section-title">Professional Summary</div>
-            <div class="summary">
-                นักพัฒนาซอฟต์แวร์ <strong>Full-stack Developer</strong> เกียรตินิยมอันดับ 1 ที่มุ่งเน้นความน่าเชื่อถือและความแม่นยำสูงสุดของระบบหลังบ้านและผลิตภัณฑ์ทางเทคโนโลยี เชี่ยวชาญการสร้างสรรค์ <strong>Enterprise Web Solutions</strong> ขนาดใหญ่โดยเลือกใช้ระบบสแต็คคุณภาพสูงอย่าง <span class="inline-tech-icon"><i class="devicon-angularjs-plain colored"></i> Angular</span> <span class="inline-tech-icon"><i class="devicon-nestjs-plain colored"></i> NestJS</span> และ <span class="inline-tech-icon"><i class="devicon-csharp-plain colored"></i> C# .NET</span> มีความเชี่ยวชาญเป็นพิเศษในการส่งมอบความปลอดภัยและการทำ <strong>High-performance RESTful APIs</strong> เพื่อรองรับการทำงานกับระบบบริการและข้อมูลทางการเงินอย่างมีระบบ พร้อมขับเคลื่อนงานภายใต้ทีมรูปแบบ <strong>Agile</strong>
+            <!-- Section : สรุปประสบการณ์ -->
+            <div class="section-title" id="summaryHeading">สรุปประสบการณ์</div>
+            <div class="summary" id="summaryText">
+                นักพัฒนาซอฟต์แวร์ <strong>Full-stack Developer</strong> ที่มีประสบการณ์พัฒนาเว็บแอปพลิเคชันระดับองค์กรและระบบภายในองค์กรในหลายโดเมน เช่น Telco, ERP, CRM, Insurance และ Property Management เชี่ยวชาญ <strong>Angular</strong>, <strong>NestJS</strong> และ <strong>Node.js</strong> โดยเน้นการออกแบบ <strong>RESTful API</strong> ที่รองรับการขยายตัว การย้ายระบบ <strong>Microservices</strong>, การควบคุมสิทธิ์แบบ <strong>RBAC</strong>, การทำ <strong>Caching</strong>, <strong>Background Jobs</strong> และการส่งมอบระบบที่พร้อมใช้งานจริง พร้อมประสบการณ์ทำงานร่วมกับ QA, จัดทำเอกสารเทคนิค และสนับสนุนงาน Deploy บน <strong>Docker</strong> ในรูปแบบทีม <strong>Agile/Scrum</strong>
             </div>
 
-            <div class="section-title">Professional Experience</div>
-
-            <div class="job-item">
-                <div class="job-header">
-                    <span class="job-title">Full-stack Developer</span>
-                    <span class="job-date">มิ.ย. 2025 – ปัจจุบัน</span>
-                </div>
-                <div class="company">Epic Consulting Co., Ltd. | Telecommunications Domain</div>
-                <ul>
-                    <li>ดีไซน์สถาปัตยกรรมและร่วมพัฒนาระบบ High-traffic Enterprise หลังบ้านประสิทธิภาพสูงแบบ Decoupled <span class="inline-tech-icon"><i class="devicon-angularjs-plain colored"></i> Angular</span> <span class="inline-tech-icon"><i class="devicon-nestjs-plain colored"></i> NestJS</span></li>
-                    <li>ประสบความสำเร็จในการทำ Refactor และ Migrate ระบบเดิมมาเป็นโครงสร้างระบบที่ปลอดภัยตามมาตรฐานสากล <span class="inline-tech-icon"><i class="devicon-typescript-plain colored"></i> TypeScript</span></li>
-                    <li>พัฒนา Data Processing Engine พร้อมระบบแคชประสิทธิภาพสูงเพื่อลดเวลาการประมวลผลข้อมูลและจัดหน้า Dashboard สรุปสถิติ <span class="inline-tech-icon"><i class="devicon-redis-plain colored"></i> Redis</span> <span class="inline-tech-icon"><i class="fa-solid fa-database"></i> SQL</span></li>
-                </ul>
-            </div>
-
-            <div class="job-item">
-                <div class="job-header">
-                    <span class="job-title">Full-stack Developer (Freelance)</span>
-                    <span class="job-date">มิ.ย. 2023 – พ.ค. 2025</span>
-                </div>
-                <div class="company">Independent Digital Solutions | Cross-Industry Systems</div>
-                <ul>
-                    <li>แปลงความต้องการทางธุรกิจที่มีความซับซ้อนให้ออกมาเป็น Web Application ระบบ ERP, CRM และระบบคิดเงินหน้าร้าน POS ที่ครบถ้วนสมบูรณ์</li>
-                    <li>ออกแบบโครงสร้างระบบชำระและจัดการธุรกรรมออนไลน์ พร้อมออกแบบระบบจัดการข้อมูลและเชื่อมต่อผ่าน <span class="inline-tech-icon"><i class="fa-solid fa-plug"></i> Payment APIs</span> ได้อย่างแม่นยำ</li>
-                </ul>
-            </div>
-
-            <div class="job-item">
-                <div class="job-header">
-                    <span class="job-title">Programmer Analyst</span>
-                    <span class="job-date">พ.ค. 2022 – พ.ค. 2023</span>
-                </div>
-                <div class="company">Mimo Tech Co., Ltd. (AIS Group) | Telecommunications Domain</div>
-                <ul>
-                    <li>พัฒนาเว็บบอร์ดภายในองค์กรและระบบจัดหมวดหมู่ข้อมูลท่อส่งแบบปลอดภัยสูง (Secure Data Pipelines) <span class="inline-tech-icon"><i class="devicon-csharp-plain colored"></i> C#</span> <span class="inline-tech-icon"><i class="devicon-dotnetcore-plain colored"></i> .NET Core</span></li>
-                    <li>ยกระดับการตอบสนองของระบบฐานข้อมูลองค์กรผ่านการแคชชุดคำสั่งและการประมวลผลประสิทธิภาพสูงแบบเบื้องหลัง <span class="inline-tech-icon"><i class="devicon-oracle-original colored"></i> Oracle PL/SQL</span></li>
-                </ul>
-            </div>
-
-            <div class="section-title" style="margin-top: 25px;">Education</div>
+            <!-- Section : การศึกษา -->
+            <div class="section-title" style="margin-top: 25px;" id="educationHeading">การศึกษา</div>
             <div class="edu-item">
-                <div class="job-title">วิทยาศาสตรบัณฑิต สาขาวิชาเทคโนโลยีสารสนเทศ (IT)</div>
-                <div style="font-size: 13px; color: #475569; margin-top: 2px;">มหาวิทยาลัยเกษตรศาสตร์ วิทยาเขตกำแพงแสน</div>
-                <div class="honors">เกียรตินิยมอันดับ 1 (GPA 3.73)</div>
+                <div class="job-title" id="educationDegree">วิทยาศาสตรบัณฑิต สาขาวิชาเทคโนโลยีสารสนเทศ (IT)</div>
+                <div style="font-size: 13px; color: #475569; margin-top: 2px;" id="educationSchool">มหาวิทยาลัยเกษตรศาสตร์ วิทยาเขตกำแพงแสน</div>
+                <div class="honors" id="educationHonors">เกียรตินิยมอันดับ 1 (GPA 3.73)</div>
+            </div>
+
+            <!-- Section : ประสบการณ์ทำงาน -->
+            <div class="section-title" id="experienceHeading">ประสบการณ์ทำงาน</div>
+            <div>
+                <div class="job-item">
+                <div class="job-header">
+                    <span class="job-title" id="job1Title">นักพัฒนา Full-stack (Web Application)</span>
+                    <span class="job-date" id="job1Date">มิ.ย. 2025 – ปัจจุบัน</span>
+                </div>
+                <div class="company" id="job1Company">Epic Consulting Co., Ltd. | Telco (Internal Enterprise Systems)</div>
+                <ul id="job1Bullets">
+                    <li>พัฒนาเว็บแอปพลิเคชันระดับองค์กรด้วย <span class="inline-tech-icon"><i class="devicon-angularjs-plain colored"></i> Angular</span> ฝั่ง Frontend และ <span class="inline-tech-icon"><i class="devicon-nestjs-plain colored"></i> NestJS</span> ฝั่ง Backend</li>
+                    <li>ออกแบบและพัฒนา <strong>RESTful API</strong> ที่สามารถขยายตัวได้ รองรับ workflow และ data service ภายในองค์กร</li>
+                    <li>ย้ายระบบ <strong>Microservices</strong> เดิมจาก <span class="inline-tech-icon"><i class="fa-solid fa-code-branch"></i> Express.js</span> ไปเป็น <span class="inline-tech-icon"><i class="devicon-nestjs-plain colored"></i> NestJS</span> เพื่อเพิ่มความง่ายในการดูแลและต่อยอดระบบ</li>
+                    <li>พัฒนาระบบ Import/Export ข้อมูลยอดขายเพื่อรองรับ dashboard สรุปผล พร้อมปรับปรุงการประมวลผลข้อมูลขนาดใหญ่ด้วย batch processing, background jobs และ caching</li>
+                    <li>สนับสนุนงาน deploy บน <span class="inline-tech-icon"><i class="devicon-docker-plain"></i> Docker</span> ในรูปแบบ manual process เช่น container lifecycle, การอัปเดต docker-compose และการ rollback</li>
+                    <li>ทำงานร่วมกับทีม QA ในขั้น pre-test และ post-test เพื่อให้ระบบพร้อมสำหรับ production</li>
+                    <li>จัดทำเอกสารทางเทคนิค เช่น API Spec, T3, Flowchart และถ่ายทอดความรู้ให้ทีมอื่น</li>
+                </ul>
+            </div>
+
+            <div class="job-item">
+                <div class="job-header">
+                    <span class="job-title" id="job2Title">นักพัฒนา Full-stack (Freelance)</span>
+                    <span class="job-date" id="job2Date">มิ.ย. 2023 – พ.ค. 2025</span>
+                </div>
+                <div class="company" id="job2Company">Freelance | ERP / CRM / Insurance / Property Management</div>
+                <ul id="job2Bullets">
+                    <li>พัฒนาระบบ <strong>ERP</strong>, <strong>CRM</strong> และ <strong>POS</strong> พร้อม dashboard และรายงานทางการเงิน</li>
+                    <li>พัฒนาแพลตฟอร์มด้าน Insurance พร้อมเชื่อมต่อ <strong>Payment Gateway</strong></li>
+                    <li>ออกแบบและพัฒนา <strong>Property Management System (PMS)</strong></li>
+                    <li>เก็บ requirement จากลูกค้าและส่งมอบโซลูชันที่เหมาะกับแต่ละงาน</li>
+                    <li>ดูแลและสนับสนุนระบบที่อยู่ใน production</li>
+                </ul>
+            </div>
+
+            <div class="job-item">
+                <div class="job-header">
+                    <span class="job-title" id="job3Title">นักวิเคราะห์โปรแกรม</span>
+                    <span class="job-date" id="job3Date">พ.ค. 2022 – พ.ค. 2023</span>
+                </div>
+                <div class="company" id="job3Company">Mimo Tech Co., Ltd. (AIS Group) | Telco (Internal Enterprise Systems)</div>
+                <ul id="job3Bullets">
+                    <li>พัฒนาเว็บแอปพลิเคชันภายในองค์กรสำหรับธุรกิจโทรคมนาคมด้วย <span class="inline-tech-icon"><i class="devicon-csharp-plain colored"></i> C#</span> และ <span class="inline-tech-icon"><i class="devicon-dotnetcore-plain colored"></i> ASP.NET Core MVC</span></li>
+                    <li>พัฒนาและปรับปรุง <strong>REST API</strong> พร้อมสนับสนุนงาน deployment</li>
+                    <li>พัฒนาระบบ Import/Export ข้อมูลยอดขายสำหรับ dashboard reporting</li>
+                    <li>ปรับปรุงประสิทธิภาพระบบด้วย background processing และ caching</li>
+                </ul>
+            </div>
+
+            <div class="job-item">
+                <div class="job-header">
+                    <span class="job-title" id="job4Title">นักพัฒนา Full-stack (Co-op)</span>
+                    <span class="job-date" id="job4Date">ม.ค. 2022 – เม.ย. 2022</span>
+                </div>
+                <div class="company" id="job4Company">Dina Solution Co., Ltd. | E-commerce / Insurance / Property Management</div>
+                <ul id="job4Bullets">
+                    <li>รับ requirement จากลูกค้า และจัดนำเสนอ Solution</li>
+                    <li>พัฒนาแอปพลิเคชันแบบ Full-stack พร้อมเชื่อมต่อระบบภายนอกและบริการของ Third-party</li>
+                    <li>พัฒนาระบบ <strong>E-commerce</strong> และ <strong>Insurance</strong></li>
+                    <li>ออกแบบและพัฒนา <strong>Property Management System (PMS)</strong></li>
+                    <li>พัฒนา<strong> แพลตฟอร์มงานหลังบ้าน </strong>ของระบบงานประกันภัย Insurance</li>
+                    <li>เพิ่มช่องทางการชำระเงินผ่านระบบอินเทอร์เน็ต ด้วยการเชื่อมต่อ <strong>Payment Gateway</strong> (third party ของทาง Xendit-gbprimepay )</li>
+                </ul>
+            </div>
             </div>
         </div>
     </div>
+
+    <script>
+        const translations = {
+            th: {
+                documentTitle: 'Resume - Thanapon Visedsang (Pentor Capital Theme)',
+                buttonLabel: 'EN',
+                buttonAria: 'Switch to English',
+                secondaryName: 'ธนพล วิเศษสังข์ อายุ 26 ปี',
+                profileTitle: 'IT Support | เจ้าหน้าที่ IT',
+                contactHeading: 'ข้อมูลติดต่อ',
+                programmingHeading: 'ภาษาโปรแกรมหลัก',
+                frontendHeading: 'ส่วนหน้า (Frontend)',
+                backendHeading: 'ส่วนหลังและฐานข้อมูล',
+                coreHeading: 'เทคนิคหลัก',
+                summaryHeading: 'สรุปประสบการณ์',
+                summaryText: `
+                    นักพัฒนาซอฟต์แวร์ <strong>Full-stack Developer</strong> ที่มีประสบการณ์พัฒนาเว็บแอปพลิเคชันระดับองค์กรและระบบภายในองค์กรในหลายโดเมน เช่น Telco, ERP, CRM, Insurance และ Property Management เชี่ยวชาญ <strong>Angular</strong>, <strong>NestJS</strong> และ <strong>Node.js</strong> โดยเน้นการออกแบบ <strong>RESTful API</strong> ที่รองรับการขยายตัว การย้ายระบบ <strong>Microservices</strong>, การควบคุมสิทธิ์แบบ <strong>RBAC</strong>, การทำ <strong>Caching</strong>, <strong>Background Jobs</strong> และการส่งมอบระบบที่พร้อมใช้งานจริง พร้อมประสบการณ์ทำงานร่วมกับ QA, จัดทำเอกสารเทคนิค และสนับสนุนงาน Deploy บน <strong>Docker</strong> ในรูปแบบทีม <strong>Agile/Scrum</strong>
+                `,
+                educationHeading: 'การศึกษา',
+                educationDegree: 'วิทยาศาสตรบัณฑิต สาขาวิชาเทคโนโลยีสารสนเทศ (IT)',
+                educationSchool: 'มหาวิทยาลัยเกษตรศาสตร์ วิทยาเขตกำแพงแสน',
+                educationHonors: 'เกียรตินิยมอันดับ 1 (GPA 3.73)',
+                experienceHeading: 'ประสบการณ์ทำงาน',
+                job1Title: 'นักพัฒนา Full-stack (Web Application)',
+                job1Date: 'มิ.ย. 2025 – ปัจจุบัน',
+                job1Bullets: [
+                    `พัฒนาเว็บแอปพลิเคชันระดับองค์กรด้วย <span class="inline-tech-icon"><i class="devicon-angularjs-plain colored"></i> Angular</span> ฝั่ง Frontend และ <span class="inline-tech-icon"><i class="devicon-nestjs-plain colored"></i> NestJS</span> ฝั่ง Backend`,
+                    `<strong>ออกแบบและพัฒนา RESTful API</strong> ที่สามารถขยายตัวได้ รองรับ workflow และ data service ภายในองค์กร`,
+                    `ย้ายระบบ <strong>Microservices</strong> เดิมจาก <span class="inline-tech-icon"><i class="fa-solid fa-code-branch"></i> Express.js</span> ไปเป็น <span class="inline-tech-icon"><i class="devicon-nestjs-plain colored"></i> NestJS</span> เพื่อเพิ่มความง่ายในการดูแลและต่อยอดระบบ`,
+                    `พัฒนาระบบ Import/Export ข้อมูลยอดขายเพื่อรองรับ dashboard สรุปผล พร้อมปรับปรุงการประมวลผลข้อมูลขนาดใหญ่ด้วย batch processing, background jobs และ caching`,
+                    `สนับสนุนงาน deploy บน <span class="inline-tech-icon"><i class="devicon-docker-plain"></i> Docker</span> ในรูปแบบ manual process เช่น container lifecycle, การอัปเดต docker-compose และการ rollback`,
+                    `ทำงานร่วมกับทีม QA ในขั้น pre-test และ post-test เพื่อให้ระบบพร้อมสำหรับ production`,
+                    `จัดทำเอกสารทางเทคนิค เช่น API Spec, T3, Flowchart และถ่ายทอดความรู้ให้ทีมอื่น`
+                ],
+                job2Title: 'นักพัฒนา Full-stack (Freelance)',
+                job2Date: 'มิ.ย. 2023 – พ.ค. 2025',
+                job2Bullets: [
+                    `พัฒนาระบบ <strong>ERP</strong>, <strong>CRM</strong> และ <strong>POS</strong> พร้อม dashboard และรายงานทางการเงิน`,
+                    `พัฒนาแพลตฟอร์มด้าน Insurance พร้อมเชื่อมต่อ <strong>Payment Gateway</strong>`,
+                    `ออกแบบและพัฒนา <strong>Property Management System (PMS)</strong>`,
+                    `เก็บ requirement จากลูกค้าและส่งมอบโซลูชันที่เหมาะกับแต่ละงาน`,
+                    `ดูแลและสนับสนุนระบบที่อยู่ใน production`
+                ],
+                job3Title: 'นักวิเคราะห์โปรแกรม',
+                job3Date: 'พ.ค. 2022 – พ.ค. 2023',
+                job3Bullets: [
+                    `พัฒนาเว็บแอปพลิเคชันภายในองค์กรสำหรับธุรกิจโทรคมนาคมด้วย <span class="inline-tech-icon"><i class="devicon-csharp-plain colored"></i> C#</span> และ <span class="inline-tech-icon"><i class="devicon-dotnetcore-plain colored"></i> ASP.NET Core MVC</span>`,
+                    `พัฒนาและปรับปรุง <strong>REST API</strong> พร้อมสนับสนุนงาน deployment`,
+                    `พัฒนาระบบ Import/Export ข้อมูลยอดขายสำหรับ dashboard reporting`,
+                    `ปรับปรุงประสิทธิภาพระบบด้วย background processing และ caching`
+                ],
+                job4Title: 'นักพัฒนา Full-stack (Co-op)',
+                job4Date: 'ม.ค. 2022 – เม.ย. 2022',
+                job4Bullets: [
+                    `รับ requirement จากลูกค้า และจัดนำเสนอ Solution`,
+                    `พัฒนาแอปพลิเคชันแบบ Full-stack พร้อมเชื่อมต่อระบบภายนอกและบริการของ Third-party`,
+                    `พัฒนาระบบ <strong>E-commerce</strong> และ <strong>Insurance</strong>`,
+                    `ออกแบบและพัฒนา <strong>Property Management System (PMS)</strong>`,
+                    `พัฒนา<strong> แพลตฟอร์มงานหลังบ้าน </strong>ของระบบงานประกันภัย Insurance`,
+                    `เพิ่มช่องทางการชำระเงินผ่านระบบอินเทอร์เน็ต ด้วยการเชื่อมต่อ <strong>Payment Gateway</strong> (third party ของทาง Xendit-gbprimepay )`
+                ]
+            },
+            en: {
+                documentTitle: 'Resume - Thanapon Visedsang (Pentor Capital Theme)',
+                buttonLabel: 'TH',
+                buttonAria: 'Switch to Thai',
+                secondaryName: 'Thanapon Visedsang | 26 years old',
+                profileTitle: 'IT Support | IT Officer',
+                contactHeading: 'Contact',
+                programmingHeading: 'Programming Languages',
+                frontendHeading: 'Frontend',
+                backendHeading: 'Backend & Database',
+                coreHeading: 'Core Techniques',
+                summaryHeading: 'Professional Summary',
+                summaryText: `
+                    Full-stack software developer with experience building enterprise web applications and internal systems across Telco, ERP, CRM, Insurance, and Property Management domains. Skilled in <strong>Angular</strong>, <strong>NestJS</strong>, and <strong>Node.js</strong>, with a strong focus on scalable <strong>RESTful APIs</strong>, <strong>microservices</strong> migration, <strong>RBAC</strong>, <strong>caching</strong>, <strong>background jobs</strong>, and delivering production-ready systems. Comfortable collaborating with QA, preparing technical documentation, and supporting <strong>Docker</strong> deployments in <strong>Agile/Scrum</strong> teams.
+                `,
+                educationHeading: 'Education',
+                educationDegree: 'Bachelor of Science in Information Technology (IT)',
+                educationSchool: 'Kasetsart University, Kamphaeng Saen Campus',
+                educationHonors: 'First-class honors (GPA 3.73)',
+                experienceHeading: 'Work Experience',
+                job1Title: 'Full-stack Developer (Web Application)',
+                job1Date: 'Jun 2025 - Present',
+                job1Bullets: [
+                    `Built enterprise web applications with <span class="inline-tech-icon"><i class="devicon-angularjs-plain colored"></i> Angular</span> on the frontend and <span class="inline-tech-icon"><i class="devicon-nestjs-plain colored"></i> NestJS</span> on the backend`,
+                    `<strong>Designed and developed scalable RESTful APIs</strong> to support internal workflows and services`,
+                    `Migrated legacy <strong>microservices</strong> from <span class="inline-tech-icon"><i class="fa-solid fa-code-branch"></i> Express.js</span> to <span class="inline-tech-icon"><i class="devicon-nestjs-plain colored"></i> NestJS</span> for easier maintenance and future growth`,
+                    `Developed sales import/export modules for dashboard reporting, including batch processing, background jobs, and caching`,
+                    `Supported <span class="inline-tech-icon"><i class="devicon-docker-plain"></i> Docker</span> deployment workflows, including container lifecycle management, docker-compose updates, and rollback`,
+                    `Collaborated with QA during pre-test and post-test phases to ensure production readiness`,
+                    `Prepared technical documents such as API specs, T3, flowcharts, and knowledge transfer materials`
+                ],
+                job2Title: 'Full-stack Developer (Freelance)',
+                job2Date: 'Jun 2023 - May 2025',
+                job2Bullets: [
+                    `Developed <strong>ERP</strong>, <strong>CRM</strong>, and <strong>POS</strong> systems with dashboards and financial reports`,
+                    `Built insurance platforms integrated with <strong>payment gateways</strong>`,
+                    `Designed and developed <strong>Property Management System (PMS)</strong>`,
+                    `Gathered client requirements and delivered tailored solutions`,
+                    `Maintained and supported systems in production`
+                ],
+                job3Title: 'Programmer Analyst',
+                job3Date: 'May 2022 - May 2023',
+                job3Bullets: [
+                    `Developed internal web applications for telecom business using <span class="inline-tech-icon"><i class="devicon-csharp-plain colored"></i> C#</span> and <span class="inline-tech-icon"><i class="devicon-dotnetcore-plain colored"></i> ASP.NET Core MVC</span>`,
+                    `Developed and improved <strong>REST APIs</strong> while supporting deployment tasks`,
+                    `Built sales import/export modules for dashboard reporting`,
+                    `Improved system performance through background processing and caching`
+                ],
+                job4Title: 'Full-stack Developer (Co-op)',
+                job4Date: 'Jan 2022 - Apr 2022',
+                job4Bullets: [
+                    `Gathered client requirements and presented solution proposals`,
+                    `Developed full-stack applications with integrations to external systems and third-party services`,
+                    `Built <strong>E-commerce</strong> and <strong>Insurance</strong> systems`,
+                    `Designed and developed <strong>Property Management System (PMS)</strong>`,
+                    `Developed the back-office platform for insurance operations`,
+                    `Added online payment channels by integrating a <strong>payment gateway</strong> (third-party services from Xendit and GBPrimePay)`
+                ]
+            }
+        };
+
+        const langToggle = document.getElementById('langToggle');
+        const textNodes = {
+            secondaryName: document.getElementById('secondaryName'),
+            profileTitle: document.getElementById('profileTitle'),
+            contactHeading: document.getElementById('contactHeading'),
+            programmingHeading: document.getElementById('programmingHeading'),
+            frontendHeading: document.getElementById('frontendHeading'),
+            backendHeading: document.getElementById('backendHeading'),
+            coreHeading: document.getElementById('coreHeading'),
+            summaryHeading: document.getElementById('summaryHeading'),
+            summaryText: document.getElementById('summaryText'),
+            educationHeading: document.getElementById('educationHeading'),
+            educationDegree: document.getElementById('educationDegree'),
+            educationSchool: document.getElementById('educationSchool'),
+            educationHonors: document.getElementById('educationHonors'),
+            experienceHeading: document.getElementById('experienceHeading'),
+            job1Title: document.getElementById('job1Title'),
+            job1Date: document.getElementById('job1Date'),
+            job1Bullets: document.getElementById('job1Bullets'),
+            job2Title: document.getElementById('job2Title'),
+            job2Date: document.getElementById('job2Date'),
+            job2Bullets: document.getElementById('job2Bullets'),
+            job3Title: document.getElementById('job3Title'),
+            job3Date: document.getElementById('job3Date'),
+            job3Bullets: document.getElementById('job3Bullets'),
+            job4Title: document.getElementById('job4Title'),
+            job4Date: document.getElementById('job4Date'),
+            job4Bullets: document.getElementById('job4Bullets')
+        };
+
+        function setBullets(listElement, items) {
+            listElement.innerHTML = items.map((item) => `<li>${item}</li>`).join('');
+        }
+
+        function applyLanguage(lang) {
+            const activeLang = translations[lang] ? lang : 'th';
+            const t = translations[activeLang];
+            document.documentElement.lang = activeLang;
+            document.title = t.documentTitle;
+            langToggle.textContent = t.buttonLabel;
+            langToggle.setAttribute('aria-pressed', activeLang === 'en' ? 'true' : 'false');
+            langToggle.setAttribute('aria-label', t.buttonAria);
+
+            textNodes.secondaryName.textContent = t.secondaryName;
+            textNodes.profileTitle.textContent = t.profileTitle;
+            textNodes.contactHeading.textContent = t.contactHeading;
+            textNodes.programmingHeading.textContent = t.programmingHeading;
+            textNodes.frontendHeading.textContent = t.frontendHeading;
+            textNodes.backendHeading.textContent = t.backendHeading;
+            textNodes.coreHeading.textContent = t.coreHeading;
+            textNodes.summaryHeading.textContent = t.summaryHeading;
+            textNodes.summaryText.innerHTML = t.summaryText;
+            textNodes.educationHeading.textContent = t.educationHeading;
+            textNodes.educationDegree.textContent = t.educationDegree;
+            textNodes.educationSchool.textContent = t.educationSchool;
+            textNodes.educationHonors.textContent = t.educationHonors;
+            textNodes.experienceHeading.textContent = t.experienceHeading;
+
+            textNodes.job1Title.textContent = t.job1Title;
+            textNodes.job1Date.textContent = t.job1Date;
+            setBullets(textNodes.job1Bullets, t.job1Bullets);
+
+            textNodes.job2Title.textContent = t.job2Title;
+            textNodes.job2Date.textContent = t.job2Date;
+            setBullets(textNodes.job2Bullets, t.job2Bullets);
+
+            textNodes.job3Title.textContent = t.job3Title;
+            textNodes.job3Date.textContent = t.job3Date;
+            setBullets(textNodes.job3Bullets, t.job3Bullets);
+
+            textNodes.job4Title.textContent = t.job4Title;
+            textNodes.job4Date.textContent = t.job4Date;
+            setBullets(textNodes.job4Bullets, t.job4Bullets);
+
+            try {
+                localStorage.setItem('resume-language', activeLang);
+            } catch (error) {
+                // Ignore storage failures in restricted environments.
+            }
+        }
+
+        let savedLanguage = 'th';
+        try {
+            savedLanguage = localStorage.getItem('resume-language') || 'th';
+        } catch (error) {
+            savedLanguage = 'th';
+        }
+        applyLanguage(savedLanguage);
+
+        langToggle.addEventListener('click', () => {
+            const nextLanguage = document.documentElement.lang === 'th' ? 'en' : 'th';
+            applyLanguage(nextLanguage);
+        });
+    </script>
 
 </body>
 </html>
